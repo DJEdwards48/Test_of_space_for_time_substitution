@@ -43,23 +43,10 @@ WQ.DoY$year <- as.numeric(WQ.DoY$year)
 summary(WQ.zoo)
 
 #Calculating z scores of each variable 
-WQ_zscores <- WQ.DoY %>%  
-  mutate(pH_z = (pH - mean(pH, na.rm = TRUE))/sd(pH, na.rm = TRUE))%>%  
-  mutate(DO_z = (DO_mg.l - mean(DO_mg.l, na.rm = TRUE))/sd(DO_mg.l, na.rm = TRUE))%>%  
-  mutate(Secchi_z = (Secchi_m - mean(Secchi_m, na.rm = TRUE))/sd(Secchi_m, na.rm = TRUE))%>%  
-  mutate(BottomDepth_z = (Bottom.Depth_m - mean(Bottom.Depth_m, na.rm = TRUE))/sd(Bottom.Depth_m, na.rm = TRUE))%>%  
+WQ_zscores <- WQ.DoY %>%
   mutate(WaterTemp_z = (Temp.water.degC - mean(Temp.water.degC, na.rm = TRUE))/sd(Temp.water.degC, na.rm = TRUE))%>%  
-  mutate(FSS_z = (Fixed.Suspended.Solids_mg.l - mean(Fixed.Suspended.Solids_mg.l, na.rm = TRUE))/sd(Fixed.Suspended.Solids_mg.l, na.rm = TRUE))%>%  
-  mutate(Turb_z = (Turbidity_NTU - mean(Turbidity_NTU, na.rm = TRUE))/sd(Turbidity_NTU, na.rm = TRUE))%>%  
-  mutate(Conduct_z = (Specific_Conductance_uS.cm - mean(Specific_Conductance_uS.cm, na.rm = TRUE))/sd(Specific_Conductance_uS.cm, na.rm = TRUE))%>%  
-  mutate(TSS_z = (Total_Suspended_Solids_mg.l - mean(Total_Suspended_Solids_mg.l, na.rm = TRUE))/sd(Total_Suspended_Solids_mg.l, na.rm = TRUE))%>%  
   mutate(Phosphorus_z = (Total_Phorphorus_Mixed_Forms_mg.l.as.P. - mean(Total_Phorphorus_Mixed_Forms_mg.l.as.P., na.rm = TRUE))/sd(Total_Phorphorus_Mixed_Forms_mg.l.as.P., na.rm = TRUE))%>%  
-  mutate(Orthophosphate_z = (Orthophosphate_.as_P._mg.l - mean(Orthophosphate_.as_P._mg.l, na.rm = TRUE))/sd(Orthophosphate_.as_P._mg.l, na.rm = TRUE))%>%  
-  mutate(NitrateNitrite_z = (Nitrate.Nitrite_.as_N._mg.l - mean(Nitrate.Nitrite_.as_N._mg.l, na.rm = TRUE))/sd(Nitrate.Nitrite_.as_N._mg.l, na.rm = TRUE))%>%  
-  mutate(DOSaturation_z = (Dissolved_Oxygen_Saturation - mean(Dissolved_Oxygen_Saturation, na.rm = TRUE))/sd(Dissolved_Oxygen_Saturation, na.rm = TRUE))%>%  
-  mutate(Chlorophylla_z = (Chlorophyll_a - mean(Chlorophyll_a, na.rm = TRUE))/sd(Chlorophyll_a, na.rm = TRUE))%>%  
-  mutate(Carbon_z = (Carbon - mean(Carbon, na.rm = TRUE))/sd(Carbon, na.rm = TRUE))%>%  
-  mutate(year_z = (year - mean(year, na.rm = TRUE))/sd(year, na.rm = TRUE))
+  mutate(NitrateNitrite_z = (Nitrate.Nitrite_.as_N._mg.l - mean(Nitrate.Nitrite_.as_N._mg.l, na.rm = TRUE))/sd(Nitrate.Nitrite_.as_N._mg.l, na.rm = TRUE))
 
 WQ_zscores$pH_z2 <- scale(WQ_zscores$pH, center = TRUE, scale = TRUE)
 summary(WQ_zscores)
